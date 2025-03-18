@@ -1,0 +1,56 @@
+# Ignore bundler config
+/.bundle
+
+# Ignore the default SQLite database.
+*.sqlite3
+*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+log/*
+tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore other unneeded files.
+*.rbc
+*.sassc
+.sass-cache
+.ruby-version
+.ruby-gemset
+.DS_Store
+.rake_tasks~
+.rspec
+.redcar
+coverage/
+spec/reports/
+test/tmp/
+test/version_tmp/
+rerun.txt
+pickle-email-*.html
+
+# Ignore Byebug command history file.
+.byebug_history
+
+# Ignore dotenv environment variables file
+.env
+.env.test
+
+# Ignore IDEs
+.idea/
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+*.orig
+*.rej
+
+# Ignore IntelliJ and RubyMine project files
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Ignore VSCode settings
+.vscode/
+.history/
