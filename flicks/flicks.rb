@@ -10,11 +10,19 @@ kermit_playlist = Playlist.new("Kermit")
 kermit_playlist.add_movie(goonies)
 kermit_playlist.add_movie(ghostbuster)
 kermit_playlist.add_movie(goblin)
-kermit_playlist.play
-kermit_playlist.print_stats
 
-fossie_playlist = Playlist.new("Fossie")
-fossie_playlist.add_movie(ghostbuster)
-fossie_playlist.add_movie(gremlin)
-fossie_playlist.play(5)
-fossie_playlist.print_stats
+loop do
+  print "\nHow many viewings? ('quit' to exit): "
+  answer = gets.chomp.strip.downcase
+
+  case answer
+  when /^(\d)+$/
+    kermit_playlist.play(answer.to_i)
+  when "quit", "quits", "e", "exit", "exits"
+    kermit_playlist.print_stats
+    break
+  else
+    print "\nPlease type number or 'quit': "
+  end
+end
+
