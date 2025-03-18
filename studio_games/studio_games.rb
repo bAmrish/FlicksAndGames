@@ -1,22 +1,25 @@
 require_relative 'lib/studio_games/player'
 require_relative 'lib/studio_games/game'
 
-iron_man = Player.new("iron man", 50)
-hulk = Player.new("hulk", 50)
-wonder_women = Player.new("wonder women", 50)
-batman = Player.new("batman", 50)
+game = Game.new("The End game")
+players = ["iron man", "hulk", "wonder women", "batman"]
 
-game = Game.new("Marvel and DC")
-game.add_player(iron_man)
-game.add_player(hulk)
-game.add_player(wonder_women)
-game.add_player(batman)
+players.each do |name|
+  player = Player.new(name)  
+  game.add_player(player)
+end
 
-game.play
-game.print_stats
-
-game = Game.new("End Game")
-game.add_player(iron_man)
-game.add_player(hulk)
-game.play(6)
-game.print_stats
+loop do
+  print "\nHow many rounds do you want to play? ('q' for exit): "
+  answer = gets.chomp.strip.downcase
+  
+  case answer
+  when 'q', 'quit', 'quits', 'e', 'exit', 'exits'
+    game.print_stats
+    break
+  when /^(\d)+$/
+    game.play(answer.to_i)
+  else
+    print "Please enter a number or 'q' of quitting\n"
+  end
+end
