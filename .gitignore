@@ -54,3 +54,5 @@ pickle-email-*.html
 # Ignore VSCode settings
 .vscode/
 .history/
+
+*scratch*

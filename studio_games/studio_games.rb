@@ -2,12 +2,15 @@ require_relative 'lib/studio_games/player'
 require_relative 'lib/studio_games/game'
 
 game = Game.new("The End game")
-players = ["iron man", "hulk", "wonder women", "batman"]
+# players = ["iron man", "hulk", "wonder women", "batman"]
 
-players.each do |name|
-  player = Player.new(name)  
-  game.add_player(player)
-end
+# players.each do |name|
+#   player = Player.new(name)  
+#   game.add_player(player)
+# end
+file_name = ARGV.shift || "players.csv"
+from_file = File.join(__dir__, file_name)
+game.load(from_file)
 
 loop do
   print "\nHow many rounds do you want to play? ('q' for exit): "
