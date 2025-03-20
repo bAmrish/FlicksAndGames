@@ -18,6 +18,15 @@ class Game
     end
   end
 
+  def save(to_file="high_scores.csv")
+    File.open(to_file, "w") do |f|
+      sorted_players.each do |player|
+        f.puts "#{player.name}, #{player.score}"
+      end      
+    end
+
+  end
+
   def add_player(player)
     @players << player
   end
@@ -98,7 +107,7 @@ class Game
     
     # Print high scores
     prt "High Scores"
-    sorted_player.each do |p|
+    sorted_players.each do |p|
       puts "#{p.name.ljust(20, ".")} #{p.score}"
     end
 
@@ -106,7 +115,7 @@ class Game
     
   end
 
-  def sorted_player
+  def sorted_players
     @players.sort_by { |p| p.score }.reverse
   end
 

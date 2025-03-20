@@ -2,12 +2,7 @@ require_relative 'lib/studio_games/player'
 require_relative 'lib/studio_games/game'
 
 game = Game.new("The End game")
-# players = ["iron man", "hulk", "wonder women", "batman"]
 
-# players.each do |name|
-#   player = Player.new(name)  
-#   game.add_player(player)
-# end
 file_name = ARGV.shift || "players.csv"
 from_file = File.join(__dir__, file_name)
 game.load(from_file)
@@ -26,3 +21,5 @@ loop do
     print "Please enter a number or 'q' of quitting\n"
   end
 end
+
+game.save
