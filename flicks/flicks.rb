@@ -7,7 +7,7 @@ file_name = ARGV.shift || "movies.csv"
 movie_file = "#{__dir__}/#{file_name}"
 
 kermit_playlist = Playlist.new("Kermit")
-kermit_playlist.load_movies(movie_file)
+kermit_playlist.load(movie_file)
 
 loop do
   print "\nHow many viewings? ('quit' to exit): "
@@ -23,4 +23,6 @@ loop do
     print "\nPlease type number or 'quit': "
   end
 end
+
+kermit_playlist.save
 
