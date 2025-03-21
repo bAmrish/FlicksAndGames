@@ -64,8 +64,11 @@ class Player
 
   def self.from_csv(line)
     name, health = line.split(",")
-    health = health.nil? ? 50 : health.to_i
+    health = health.nil? ? 50 : Integer(health)
     Player.new(name, health)
+  rescue ArgumentError
+    puts "Ignored invalid health '#{health}'"
+    Player.new(name)
   end
 
   def to_csv

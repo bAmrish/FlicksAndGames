@@ -14,6 +14,10 @@ class Game
       player = Player.from_csv line
       add_player(player)
     end
+  rescue Errno::ENOENT
+    puts "Unable to open file #{from_file}."
+    puts "Please check the file exits and it has right permissions."
+    exit 1
   end
 
   def save(to_file="high_scores.csv")

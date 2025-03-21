@@ -49,8 +49,11 @@ class Movie
 
   def self.from_csv(line)
     title, rank = line.chomp.split(',')
-    rank = rank.nil? ? 5 : rank.to_i
+    rank = rank.nil? ? 5 : Integer(rank)
     Movie.new(title, rank)
+  rescue ArgumentError
+    puts "Ignored invalid rank '#{rank}'"
+    Movie.new(title)
   end
 
   def to_csv

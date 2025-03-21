@@ -8,11 +8,15 @@ class Playlist
     @movies = []
   end
 
-  def load(from_file)
+  def load(from_file)    
     File.readlines(from_file).each do |line|
       movie = Movie.from_csv(line)
       add_movie(movie)
     end
+  rescue Errno::ENOENT
+    puts "Unable to open file #{from_file}"
+    puts "Please check it exists and has the right permissions."
+    exit 1
   end
 
   def save(to_file = "movie_rankings.csv")
