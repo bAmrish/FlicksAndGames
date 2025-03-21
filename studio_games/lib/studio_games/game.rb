@@ -11,9 +11,7 @@ class Game
   def load(from_file)
     File.readlines(from_file, chomp: true).each do |line|
       next if line.empty?
-      name, health = line.split(",")
-      health = health.nil? ? 50 : health.to_i
-      player = Player.new(name, health)
+      player = Player.from_csv line
       add_player(player)
     end
   end
@@ -21,7 +19,7 @@ class Game
   def save(to_file="high_scores.csv")
     File.open(to_file, "w") do |f|
       sorted_players.each do |player|
-        f.puts "#{player.name}, #{player.score}"
+        f.puts player.to_csv
       end      
     end
 

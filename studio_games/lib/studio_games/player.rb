@@ -62,6 +62,16 @@ class Player
     end
   end
 
+  def self.from_csv(line)
+    name, health = line.split(",")
+    health = health.nil? ? 50 : health.to_i
+    Player.new(name, health)
+  end
+
+  def to_csv
+    "#{name}, #{score}"
+  end
+
 end
 
 if __FILE__ == $0

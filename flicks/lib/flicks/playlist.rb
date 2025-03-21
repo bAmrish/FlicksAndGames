@@ -10,9 +10,7 @@ class Playlist
 
   def load(from_file)
     File.readlines(from_file).each do |line|
-      name, rank = line.chomp.split(',')
-      rank = rank.nil? ? 5 : rank.to_i
-      movie = Movie.new(name, rank)
+      movie = Movie.from_csv(line)
       add_movie(movie)
     end
   end
@@ -20,7 +18,7 @@ class Playlist
   def save(to_file = "movie_rankings.csv")
     File.open(to_file, "w") do |f|
       sorted_movies.each do |movie|
-        f.puts "#{movie.title}, #{movie.rank}"
+        f.puts movie.to_csv
       end
     end
   end

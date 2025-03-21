@@ -47,6 +47,16 @@ class Movie
     end
   end
 
+  def self.from_csv(line)
+    title, rank = line.chomp.split(',')
+    rank = rank.nil? ? 5 : rank.to_i
+    Movie.new(title, rank)
+  end
+
+  def to_csv
+    "#{title}, #{rank}"
+  end
+
   def to_s
     "#{@title} has a rank of #{@rank}"
   end
