@@ -1,4 +1,6 @@
+require_relative 'movie'
 require_relative 'snackbar'
+
 module Flicks
   class Playlist
     attr_reader :name, :movies
