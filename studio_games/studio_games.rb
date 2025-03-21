@@ -3,15 +3,15 @@ require_relative 'lib/studio_games/clumsy_player'
 require_relative 'lib/studio_games/berserk_player'
 require_relative 'lib/studio_games/game'
 
-game = Game.new("The End game")
+game =StudioGames::Game.new("The End game")
 
 file_name = ARGV.shift || "players.csv"
 from_file = File.join(__dir__, file_name)
 game.load(from_file)
 
-clumsy = ClumsyPlayer.new("klutz", 105, 10)
+clumsy = StudioGames::ClumsyPlayer.new("klutz", 105, 10)
 game.add_player(clumsy)
-berserker = BerserkPlayer.new("berserker", 50)
+berserker = StudioGames::BerserkPlayer.new("berserker", 50)
 game.add_player(berserker)
 
 loop do

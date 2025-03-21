@@ -1,6 +1,7 @@
 require_relative "player"
 
-class ClumsyPlayer < Player
+module StudioGames
+  class ClumsyPlayer < Player
   def initialize(name, health=50, boost_factor=1)
     super(name, health)
     @clumsiness = 0.5
@@ -14,10 +15,11 @@ class ClumsyPlayer < Player
   def add_treasure(name, score)
     super(name, score * @clumsiness)
   end
+  end
 end
 
 if __FILE__ == $0
-  clumsy = ClumsyPlayer.new("klutz")
+  clumsy = StudioGames::ClumsyPlayer.new("klutz")
 
   clumsy.add_treasure("flute", 50)
   clumsy.add_treasure("flute", 50)

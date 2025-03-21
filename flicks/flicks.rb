@@ -7,9 +7,9 @@ require_relative 'lib/flicks/playlist'
 file_name = ARGV.shift || "movies.csv"
 movie_file = "#{__dir__}/#{file_name}"
 
-kermit_playlist = Playlist.new("Kermit")
+kermit_playlist = Flicks::Playlist.new("Kermit")
 kermit_playlist.load(movie_file)
-minions = Movie3d.new('minions')
+minions = Flicks::Movie3d.new('minions')
 kermit_playlist.add_movie(minions)
 
 loop do
