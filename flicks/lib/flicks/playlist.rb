@@ -58,15 +58,15 @@ class Playlist
   end
 
   def sorted_movies
-    @movies.sort{ |m| m.rank}.reverse
+    @movies.sort_by{ |m| m.rank}.reverse
   end
 
   def print_stats
     puts "\n#{@name}'s Stats: "
     puts sorted_movies
-    puts "Snacks Eaten: "
-    @movies.each do |movie|
-      puts "Snacks Eaten for #{movie.title}"
+    puts "\nSnacks Eaten: "
+    sorted_movies.each do |movie|
+      puts "\nSnacks Eaten for #{movie.title}"
       movie.snacks_eaten.each do |name, price|
         puts "#{name}: $#{price}"
       end

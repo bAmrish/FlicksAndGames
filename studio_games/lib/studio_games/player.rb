@@ -1,11 +1,18 @@
+require_relative 'playable'
+require_relative 'auditable'
+
 class Player
-  attr_reader :health, :name, :found_treasure
+  attr_reader :name, :found_treasures
+  attr_accessor :health
+  
+  include Playable
+  include Auditable
 
   def initialize(name, health = 100)
     @name = capitalize(name)
     @health = health
     @score = 0
-    @found_treasure = Hash.new(0)
+    @found_treasures = Hash.new(0)
   end
 
   def score
@@ -13,11 +20,11 @@ class Player
   end
 
   def add_treasure(name, score)
-    @found_treasure[name] += score
+    @found_treasures[name] += score
   end
 
   def points
-    @found_treasure.values.sum
+    @found_treasures.values.sum
   end
 
   def capitalize(name)
@@ -35,13 +42,6 @@ class Player
     puts "I'm #{@name} with a health of #{@health} and a score of #{score}"
   end
 
-  def boost
-    @health += 15
-  end
-
-  def drain
-    @health -= 10 unless @health <= 0
-  end
 
   def roll_die
     rand(1..6)
@@ -49,7 +49,7 @@ class Player
   
   def play
     roll = roll_die
-    print "🎲: #{roll} → "
+    audit(roll, "🎲")
     case roll
     when 1..2
       drain

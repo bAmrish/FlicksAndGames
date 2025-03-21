@@ -99,7 +99,7 @@ class Game
     @players.each do |player|
       print_dotted_line
       prt "Stats for #{player.name}"  
-      player.found_treasure.each do |name, score|
+      player.found_treasures.each do |name, score|
         puts "#{name.ljust(20, ".")} $#{score}"  
       end
       puts "Total: $#{player.points}"

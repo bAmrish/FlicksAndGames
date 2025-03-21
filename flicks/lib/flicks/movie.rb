@@ -1,6 +1,9 @@
+require_relative 'rankable'
+
 class Movie
+  include Rankable
   attr_reader :title, :rank, :snacks_eaten
-  attr_writer :title
+  attr_writer :title, :rank
   
   def initialize(title, rank=5)
     @title = title.capitalize
@@ -10,14 +13,6 @@ class Movie
 
   def title=(title)
     @title = title.capitalize
-  end
-
-  def thumbs_up
-    @rank += 1
-  end
-
-  def thumbs_down
-    @rank -= 1    
   end
 
   def add_snack(name, price)
