@@ -1,4 +1,5 @@
 require_relative 'lib/flicks/movie'
+require_relative 'lib/flicks/movie3d'
 require_relative 'lib/flicks/playlist'
 
 # Read the movie file name from command line arguments
@@ -8,6 +9,8 @@ movie_file = "#{__dir__}/#{file_name}"
 
 kermit_playlist = Playlist.new("Kermit")
 kermit_playlist.load(movie_file)
+minions = Movie3d.new('minions')
+kermit_playlist.add_movie(minions)
 
 loop do
   print "\nHow many viewings? ('quit' to exit): "
